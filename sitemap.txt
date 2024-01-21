@@ -1,3 +1,5 @@
+http://example.com/tags/index.html
+http://example.com/categories/index.html
 http://example.com/2024/01/21/C-C-%E5%A4%B4%E6%96%87%E4%BB%B6/
 http://example.com/about/index.html
 http://example.com/link/index.html

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-08-06T08:20:37.733Z</updated>
+  <updated>2024-01-21T10:57:16.292Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C/C++头文件</title>
+    <link href="http://example.com/2024/01/21/C-C-%E5%A4%B4%E6%96%87%E4%BB%B6/"/>
+    <id>http://example.com/2024/01/21/C-C-%E5%A4%B4%E6%96%87%E4%BB%B6/</id>
+    <published>2024-01-21T10:48:14.000Z</published>
+    <updated>2024-01-21T10:57:16.292Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>C Header files offer the features like library functions, data types, macros, etc by importing them into the program with the help of a preprocessor directive <code>#include</code>​. The <code>.h</code>​ is the extension of it.</p></blockquote><h1 id="C-常用头文件"><a href="#C-常用头文件" class="headerlink" title="C++常用头文件"></a>C++常用头文件</h1><p><a href="https://www.apiref.com/cpp-zh/cpp/header.html">C++ 标准库头文件 - C++中文 - API参考文档 (apiref.com)</a></p><ul><li>万能头文件：<code>#include &lt;bits/stdc++.h&gt;</code>​</li><li>数据流输入输出：<code>#include &lt;iostream&gt;</code>​</li><li>算法类函数：<code>#include &lt;algorithm&gt;</code>​</li><li>数学函数（<code>max(), min(), sqrt()...</code>​）：<code>#include &lt;math.h&gt;</code>​或<code>#include &lt;cmath&gt;</code>​</li><li>时间函数：<code>#include &lt;time.h&gt;</code>​</li><li>字符串操作：<code>#include &lt;string&gt;</code>​或<code>#include &lt;cstring&gt;</code>​</li><li>链表：<code>#include &lt;list&gt;</code>​</li><li>向量：<code>#include &lt;vector&gt;</code>​</li><li>图：<code>#include &lt;map&gt;</code>​</li><li>队列：<code>#include &lt;queue&gt;</code>​</li><li>迭代器：<code>#include &lt;iterator&gt;</code></li><li>栈：<code>#include &lt;stack&gt;</code></li></ul><h1 id="引用头文件"><a href="#引用头文件" class="headerlink" title="引用头文件"></a>引用头文件</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>可以使用预处理指令<code>#include</code>​可以引用用户和系统头文件。引用头文件相当于复制头文件的内容。</p><ol><li><p>引用系统头文件：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;file&gt;</span></span></span><br></pre></td></tr></table></figure></li><li><p>引用用户头文件：（如果在程序目录没有找到引用的头文件则到编译器的类库路径的目录下找该头文件）</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;file&quot;</span></span></span><br></pre></td></tr></table></figure></li></ol><p>可以用宏来定义头文件的名称，例如：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SYSTEM_H <span class="string">&quot;system_1.h&quot;</span></span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> SYSTEM_H</span></span><br></pre></td></tr></table></figure><h2 id="只引用一次头文件"><a href="#只引用一次头文件" class="headerlink" title="只引用一次头文件"></a>只引用一次头文件</h2><p>如果一个头文件被引用两次，编译器处理两次头文件的内容，会产生错误。为了避免，标准做法是将整个内容放在条件编译语句中：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> HEADER_FILE</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HEADER_FILE</span></span><br><span class="line"></span><br><span class="line">the entire header file file</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure><p>​<code>#ifndef</code>​是包装器，当再次引用此头文件时，条件为假，因为<code>HEADER_FILE</code>​已经定义，于是预处理器跳过文件的全部内容，编译器会忽视它。</p><p>类似地，<code>#ifdef</code>​就表示如果已经定义，就执行下面的语句。</p><h2 id="有条件引用"><a href="#有条件引用" class="headerlink" title="有条件引用"></a>有条件引用</h2><p>有时需要依照不同情况从多个不同的头文件中选择一个引用到程序中。例如：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> SYSTEM_1</span></span><br><span class="line">   <span class="meta"># <span class="keyword">include</span> <span class="string">&quot;system_1.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> SYSTEM_2</span></span><br><span class="line">   <span class="meta"># <span class="keyword">include</span> <span class="string">&quot;system_2.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> SYSTEM_3</span></span><br><span class="line">   ...</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure><h1 id="头文件过多"><a href="#头文件过多" class="headerlink" title="头文件过多"></a>头文件过多</h1><p>在有多个<code>.h</code>​文件和多个<code>.c</code>​文件的时候，可以使用<code>global.h</code>​包含所有的头文件，然后包含<code>global.h</code>​文件就可以实现所有头文件的包含。</p><p>如：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> _GLOBAL_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _GLOBAL_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Config.h&gt;</span></span></span><br></pre></td></tr></table></figure><p>‍</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;C Header files offer the features like library functions, data types, macros, etc by importing them into the program with th</summary>
+      
+    
+    
+    
+    <category term="Programming" scheme="http://example.com/categories/Programming/"/>
+    
+    <category term="C/C++" scheme="http://example.com/categories/Programming/C-C/"/>
+    
+    
+    <category term="C/C++" scheme="http://example.com/tags/C-C/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

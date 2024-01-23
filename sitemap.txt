@@ -1,6 +1,6 @@
-http://example.com/categories/index.html
 http://example.com/music/index.html
 http://example.com/movies/index.html
+http://example.com/categories/index.html
 http://example.com/link/index.html
 http://example.com/2023/08/06/hello-world/
 http://example.com/tags/index.html

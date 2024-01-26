@@ -101,14 +101,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/Other/</loc>
+    <loc>http://example.com/categories/Programming/</loc>
     <lastmod>2024-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Programming/</loc>
+    <loc>http://example.com/categories/Other/</loc>
     <lastmod>2024-01-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
